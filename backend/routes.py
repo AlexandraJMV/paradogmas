@@ -5,6 +5,9 @@ from waitress import serve
 import json
 from flask import render_template, redirect, url_for
 
+#https://www.kaggle.com/datasets/joebeachcapital/30000-spotify-song
+
+
 @app.route('/index', methods = ['GET'])
 @app.route('/',methods=['GET'])
 def index():
@@ -15,12 +18,12 @@ def index():
     # https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
     #return redirect(url_for('filtro'))
     
-@app.route('/filtro')
+@app.route('/filtro',methods=['GET'])
 def filtro():
     jsonFile = open("backend/data/spotify_songs.json", "r", encoding='utf-8')
     datos = (json.load(jsonFile))
     salida=datos
-    return salida
+    return render_template("filtro.html")
 
 @app.route('/segundoGrafico')
 def segundoGrafico():
