@@ -38,6 +38,12 @@ def tercerGrafico():
 def cuartoGrafico():
     return 'Chao mundillo '
 
+@app.route('/filtro')
+def filtro():
+    dat = request.cookies.get('data')
+    print(dat)
+    return render_template("filtro.html", data = dat)
+
 @app.route('/', methods =["GET", "POST"])
 def getnum():
     if request.method == "POST":
@@ -45,17 +51,18 @@ def getnum():
        numero = request.form.get("numero")
        numero = int(numero)
        data = generate_data(numero)
-       print(data)
-       return render_template("filtro.html", data = data)
+       redirected = redirect(url_for('.filtro'))
+       redirected.set_cookie('data', data)
+       
+       return redirected
        
     return render_template('index.html')
 
 def generate_data(number):
-    
     data_path = "backend/data/spotify_songs.csv"
     cats = ["track_name",
             "track_artist"]
-    
+
     dataframe = pd.read_csv(data_path, encoding = 'utf-8')[cats]
     tracks_by_artist = dataframe.groupby(by=['track_artist']).count()
     

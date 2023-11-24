@@ -21,7 +21,9 @@ new Chart(ctx, {
     scales: {
       y: {
         beginAtZero: true
-      }
+      },
+      responsive : false,
+      maintainAspectRatio: true
     }
   }
 });
