@@ -4,26 +4,27 @@ from flask import request, jsonify
 from waitress import serve
 import json
 from flask import render_template, redirect, url_for
+import pandas as pd
+import numpy as np
+
+
 
 #https://www.kaggle.com/datasets/joebeachcapital/30000-spotify-song
 
+@app.route('/qa',methods=['GET', 'POST'])
+def aaaa():
+    if request.method == 'POST':
+        # If the form is submitted via POST
+        try:
+            # Get the number from the form data
+            number = int(request.form['number'])
+            data = generate_data(number)
+            
+        except ValueError:
+            return 'Invalid input. Please enter a valid number.'
+    return render_template("filtro.html", data = data)
 
-@app.route('/index', methods = ['GET'])
-@app.route('/',methods=['GET'])
-def index():
 
-    return render_template("index.html")
-    #return "<h1>heLLOOOOO</h1>"
-    #return jsonify(datos)
-    # https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
-    #return redirect(url_for('filtro'))
-    
-@app.route('/filtro',methods=['GET'])
-def filtro():
-    jsonFile = open("backend/data/spotify_songs.json", "r", encoding='utf-8')
-    datos = (json.load(jsonFile))
-    salida=datos
-    return render_template("filtro.html")
 
 @app.route('/segundoGrafico')
 def segundoGrafico():
@@ -31,8 +32,37 @@ def segundoGrafico():
 
 @app.route('/tercerGrafico')
 def tercerGrafico():
-    return 'Holamundo'
+    return 'Chao mundo'
 
 @app.route('/cuartoGrafico')
 def cuartoGrafico():
-    return 'Hola mundo '
+    return 'Chao mundillo '
+
+@app.route('/', methods =["GET", "POST"])
+def getnum():
+    if request.method == "POST":
+       # getting input with name = fname in HTML form
+       numero = request.form.get("numero")
+       numero = int(numero)
+       data = generate_data(numero)
+       print(data)
+       return render_template("filtro.html", data = data)
+       
+    return render_template('index.html')
+
+def generate_data(number):
+    
+    data_path = "backend/data/spotify_songs.csv"
+    cats = ["track_name",
+            "track_artist"]
+    
+    dataframe = pd.read_csv(data_path, encoding = 'utf-8')[cats]
+    tracks_by_artist = dataframe.groupby(by=['track_artist']).count()
+    
+    # Top 30 artistas según cantidad de canciones
+    top30_tba = tracks_by_artist.sort_values('track_name', ascending = False)['track_name'].head(number)
+    top30 = top30_tba.to_json(orient = 'split')
+    
+    return top30
+    
+
