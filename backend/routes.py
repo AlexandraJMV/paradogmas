@@ -9,39 +9,15 @@ import numpy as np
 
 #https://www.kaggle.com/datasets/joebeachcapital/30000-spotify-song
 
-@app.route('/naaaa',methods=['GET', 'POST'])
-def aaaa():
-    if request.method == 'POST':
-        # If the form is submitted via POST
-        try:
-            # Get the number from the form data
-            number = int(request.form['number'])
-            data = generate_data(number)
-            
-        except ValueError:
-            return 'Invalid input. Please enter a valid number.'
-    return render_template("filtro.html", data = data)
-
-
-
-
-@app.route('/filtro')
-def filtro():
-    dat = request.cookies.get('data')
-    print(dat)
-    return render_template("filtro.html", data = dat)
-
 @app.route('/', methods =["GET", "POST"])
 def getnum():
     if request.method == "POST":
-       # gettvscode-file://vscode-app/c:/Users/masap/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmling input with name = fname in HTML form
+        
        numero = request.form.get("numero")
        numero = int(numero)
        data = generate_data(numero)
-       redirected = redirect(url_for('.filtro'))
-       redirected.set_cookie('data', data)
        
-       return redirected
+       return render_template('filtro.html', data = data)
        
     return render_template('index.html')
 
@@ -58,5 +34,55 @@ def generate_data(number):
     top30 = top30_tba.to_json(orient = 'split')
     
     return top30
-    
 
+@app.route('/extension', methods = ["POST", "GET"])
+def extension():
+    if request.method == "POST":                    # Si usamos el método POST vamos a :
+        user = request.form["nm"]
+        return redirect(url_for("user", usr = user))
+    else:                                           # Si usamos el método GET vamos a...
+        return render_template('extension.html')
+
+@app.route("/<usr>")
+def user(usr):
+    return f"<h1>{usr}</h1>"
+
+@app.route('/dinachart')
+def dinamic():
+    return render_template('dinachart.html')
+
+@app.route('/get_data/<selected_data>')
+def get_data(selected_data):
+    if selected_data == 'data1':
+        return toptrack_count()
+    elif selected_data == 'data2':
+        return bottomtrack_count()
+    else:
+        return jsonify([])
+
+def toptrack_count():
+    data_path = "backend/data/spotify_songs.csv"
+    cats = ["track_name",
+            "track_artist"]
+
+    dataframe = pd.read_csv(data_path, encoding = 'utf-8')[cats]
+    tracks_by_artist = dataframe.groupby(by=['track_artist']).count()
+    
+    # Top 10 artistas según cantidad de canciones
+    top10 = tracks_by_artist.sort_values('track_name', ascending = False)['track_name'].head(10)
+    top10 = top10.to_json(orient = 'split')
+    print(top10)
+    return top10
+
+def bottomtrack_count():
+    data_path = "backend/data/spotify_songs.csv"
+    cats = ["track_name",
+            "track_artist"]
+
+    dataframe = pd.read_csv(data_path, encoding = 'utf-8')[cats]
+    tracks_by_artist = dataframe.groupby(by=['track_artist']).count()
+    
+    # Top 10 artistas según cantidad de canciones
+    top10 = tracks_by_artist.sort_values('track_name', ascending = True)['track_name'].head(10)
+    top10 = top10.to_json(orient = 'split')
+    return top10
