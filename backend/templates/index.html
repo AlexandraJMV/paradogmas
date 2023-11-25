@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Chart</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
+
     <h2>Dynamic Chart</h2>
     
     <form action="{{ url_for("getnum")}}" method="post">
@@ -14,5 +9,4 @@
         <input type="text" id="num" name="numero" placeholder="num">
         <button type="submit">Send</button>
 
-</body>
-</html>
+{% endblock  %}

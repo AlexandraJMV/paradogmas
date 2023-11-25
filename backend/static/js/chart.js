@@ -1,7 +1,7 @@
 const ctx = document.getElementById('myChart');
 var dataElement = document.getElementById("data");
+
 var data = dataElement.dataset.value;
-console.log(data)
 
 var jsonData = JSON.parse(data);
 
@@ -19,10 +19,7 @@ new Chart(ctx, {
   },
   options: {
     scales: {
-      y: {
-        beginAtZero: true
-      },
-      responsive : false,
+      responsive : true,
       maintainAspectRatio: true
     }
   }
