@@ -7,11 +7,9 @@ from flask import render_template, redirect, url_for
 import pandas as pd
 import numpy as np
 
-
-
 #https://www.kaggle.com/datasets/joebeachcapital/30000-spotify-song
 
-@app.route('/qa',methods=['GET', 'POST'])
+@app.route('/naaaa',methods=['GET', 'POST'])
 def aaaa():
     if request.method == 'POST':
         # If the form is submitted via POST
@@ -26,17 +24,6 @@ def aaaa():
 
 
 
-@app.route('/segundoGrafico')
-def segundoGrafico():
-    return 'Holamundo'
-
-@app.route('/tercerGrafico')
-def tercerGrafico():
-    return 'Chao mundo'
-
-@app.route('/cuartoGrafico')
-def cuartoGrafico():
-    return 'Chao mundillo '
 
 @app.route('/filtro')
 def filtro():
@@ -47,7 +34,7 @@ def filtro():
 @app.route('/', methods =["GET", "POST"])
 def getnum():
     if request.method == "POST":
-       # getting input with name = fname in HTML form
+       # gettvscode-file://vscode-app/c:/Users/masap/AppData/Local/Programs/Microsoft%20VS%20Code/resources/app/out/vs/code/electron-sandbox/workbench/workbench.htmling input with name = fname in HTML form
        numero = request.form.get("numero")
        numero = int(numero)
        data = generate_data(numero)
