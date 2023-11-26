@@ -87,7 +87,7 @@ def dinamic():
     return render_template('dinachart.html')
 
 @app.route('/get_data/<selected_data>')
-def get_data(selected_data):
+def get_data(selected_data):s
     if selected_data == 'data1':
         return toptrack_count()
     elif selected_data == 'data2':

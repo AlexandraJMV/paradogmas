@@ -1,28 +1,23 @@
 function updateChart() {
-    var selectedData = document.getElementById('dataSelect').value;
+    let selectedData = document.getElementById('dataSelect').value;
 
     // Make an asynchronous request to the Flask route to get data
     fetch(`/get_data/${selectedData}`)
         .then(response => response.json())
-        .then(data => {
-            // Update the chart with the received data
-            console.log(data)
-            console.log(data.data)
-            console.log(data.index)
-            
-            // Destroy the existing chart
+        .then(data => { 
+
     if (myChart) {
         myChart.destroy();
     }
 
     // Create a new chart with the received data
-    var ctx = document.getElementById('myChart').getContext('2d');
+    let ctx = document.getElementById('myChart').getContext('2d');
     myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: data.index,
             datasets: [{
-                label: 'Selected Data',
+                label: document.getElementById('dataSelect').value,
                 data: data.data,
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
@@ -41,8 +36,8 @@ function updateChart() {
 }
 
 
-var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
+let ctx = document.getElementById('myChart').getContext('2d');
+let myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: [],

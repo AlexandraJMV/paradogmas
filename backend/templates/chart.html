@@ -2,12 +2,9 @@
 {% block content %}
         <div>
             <canvas id="myChart" style="width: 600px; height: 400px;"></canvas>
-        </div>
-                  
-        <div id = 'data' data-value = "{{data}}"></div>
-        
-        <script type = "module" src="../static/js/chart.js"></script>
-        
+        </div>          
+        <div id = 'data' data-value = "{{data}}"></div>  
+        <script type = "module" src="../static/js/chart.js"></script>    
         <a href='{{url_for("getnum")}}'>Return</a>
 
 {% endblock content %}
