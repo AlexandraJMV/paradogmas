@@ -117,3 +117,17 @@ p {
     margin-top: 0 10px;
 
 }
+
+.content {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.sau {
+    padding: 30px;
+    background: #1f1d1d;
+}
