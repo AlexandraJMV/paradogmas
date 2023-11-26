@@ -73,7 +73,7 @@ body {
 
 .header {
     height: 60vh !important;
-    background:url(/backend/img/wallpaper.gif) no-repeat center;
+    background:url(/paradogmas/backend/img/wallpaper.gif) no-repeat center;
     background-size: cover;
 
 }
