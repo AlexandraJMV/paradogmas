@@ -73,7 +73,7 @@ body {
 
 .header {
     height: 60vh !important;
-    background:url(/paradogmas/backend/img/wallpaper.gif) no-repeat center;
+    background:url(/paradogmas/backend/static/img/wallpaper.gif) no-repeat center;
     background-size: cover;
 
 }
@@ -83,13 +83,14 @@ body {
     font-size: 60px;
     font-weight: 600;
     text-transform: uppercase;
+    color: #fff;
 
 }
 
 p {
     margin-bottom: 40px;
     font-size: 18px;
-    color: #171717;
+    color: #fff;
 
 }
 
@@ -130,4 +131,53 @@ p {
 .sau {
     padding: 30px;
     background: #1f1d1d;
+}
+
+.box-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+
+}
+
+.box-container .box{
+    height: 11rem;
+    width: 17rem;
+    background: #101010;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 .3 5rem rgba(0, 0, 0, 5);
+    margin: 2rem;
+
+}
+
+.box-container .box i{
+    height: 3rem;
+    width: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    background: #9c27b0;
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.box-container .box p{
+    padding: 0 15px;
+    font-size: 16px;
+
+}
+
+.about {
+    background: #171717;
+
+}
+
+.price {
+    background: url(/paradogmas/backend/static/img/tokyoGente.jpg) no-repeat center;
+    background-attachment: fixed;
+    background-size: cover;
+    text-align: center;
 }
