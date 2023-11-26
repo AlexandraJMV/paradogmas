@@ -83,7 +83,7 @@ body {
     font-size: 60px;
     font-weight: 600;
     text-transform: uppercase;
-    color: #fff;
+    color: #bbb;
 
 }
 
@@ -176,8 +176,15 @@ p {
 }
 
 .price {
-    background: url(/paradogmas/backend/static/img/tokyoGente.jpg) no-repeat center;
+    background:url(/paradogmas/backend/static/img/wallpaper.gif) no-repeat center;
     background-attachment: fixed;
     background-size: cover;
     text-align: center;
+}
+
+.contact {
+    padding: 20px;
+    color: #171717;
+    padding-bottom: 0;
+
 }
