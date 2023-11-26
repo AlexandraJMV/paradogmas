@@ -91,6 +91,7 @@ p {
     margin-bottom: 40px;
     font-size: 18px;
     color: #fff;
+    padding: 0 100px;
 
 }
 
@@ -184,7 +185,7 @@ p {
 
 .contact {
     padding: 20px;
-    color: #171717;
+    background: #101010;
     padding-bottom: 0;
 
 }
