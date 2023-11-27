@@ -39,58 +39,55 @@ def bottomtrack_count():
     top10 = top10.to_json(orient = 'split')
     return top10
 
-def generate_data(number):
-    data_path = "backend/data/spotify_songs.csv"
-    cats = ["track_name",
-            "track_artist"]
+def generate_genre_data(time_intv):
+    
+    try :
+        data_path = "backend/data/spotify_songs.csv"
+        data = pd.read_csv(data_path)
+        
+        colums = ['playlist_subgenre', 'playlist_genre', 'track_album_release_date']
+        data = data[colums]
+        
+        data['date'] = pd.to_datetime(data.track_album_release_date, format='mixed')
+        data['year'] = data.date.dt.year
+        
+        data.loc[ (data.year >= 1957) & (data.year <= 1980), 'time_interv'] = '1957 to 1980'
+        data.loc[ (data.year > 1980) & (data.year <= 1990), 'time_interv'] = '1981 to 1990'
+        data.loc[ (data.year > 1990) & (data.year <= 2004), 'time_interv'] = '1991 to 2004'
+        data.loc[ (data.year > 2004) & (data.year <= 2012), 'time_interv'] = '2005 to 2012'
+        data.loc[ (data.year > 2012) & (data.year <= 2016), 'time_interv'] = '2013 to 2016'
+        data.loc[ (data.year > 2016) & (data.year <= 2020), 'time_interv'] = '2017 to 2020'
 
-    dataframe = pd.read_csv(data_path, encoding = 'utf-8')[cats]
-    tracks_by_artist = dataframe.groupby(by=['track_artist']).count()
+        grouped_data = data.groupby(by=['time_interv', 'playlist_subgenre']).count()
+        
+        result = grouped_data.loc[time_intv].sort_values(by = 'date', ascending=False)
+        return result.date.to_json(orient='split')
     
-    # Top 30 artistas según cantidad de canciones
-    top30_tba = tracks_by_artist.sort_values('track_name', ascending = False)['track_name'].head(number)
-    top30 = top30_tba.to_json(orient = 'split')
+    except:
+        return None
     
-    return top30
 
 # Rutas 
 
-@app.route('/getnum', methods =["GET", "POST"])
-def getnum():
-    if request.method == "POST":
-        
-        numero = request.form.get("numero")
-        if numero.isdigit():
-            numero = int(numero)
-            data = generate_data(numero)
-       
-            return render_template('chart.html', data = data)
-        else:
-            return render_template('error.html', error = 'Ingresó una cadena inválida!!')
-       
-    return render_template('index.html')
+# Recopilamos data para el segundo gráfico
+@app.route('/get_data2/<selected_data>')
+def get_data2(selected_data):
+    if selected_data:
+        return generate_genre_data(selected_data)
+    else:
+        return jsonify([])
 
-@app.route('/extension', methods = ["POST", "GET"])
-def extension():
-    if request.method == "POST":                    # Si usamos el método POST vamos a :
-        user = request.form["nm"]
-        return redirect(url_for("user", usr = user))
-    else:                                           # Si usamos el método GET vamos a...
-        return render_template('extension.html')
-
-@app.route("/<usr>")
-def user(usr):
-    return f"<h1>{usr}</h1>"
-
-@app.route('/dinachart')
-def dinamic():
-    return render_template('dinachart.html')
-
+# Recopilamos data para el primer gráfico
 @app.route('/get_data/<selected_data>')
-def get_data(selected_data):s
-    if selected_data == 'data1':
+def get_data(selected_data):
+    if selected_data == 'Top Artistas':
         return toptrack_count()
-    elif selected_data == 'data2':
+    elif selected_data == 'Últimos Artistas':
         return bottomtrack_count()
     else:
         return jsonify([])
+
+@app.route("/", methods = ["GET", "POST"])
+@app.route("/face", methods = ["GET", "POST"])
+def face():
+    return render_template("face.html")
