@@ -43,8 +43,8 @@ h1 {
 }
 
 .accordion-item {
-  background-color: #fff;
-  color: #111;
+  background-color: #2d1717;
+  color: #fff;
   margin: 1rem 0;
   border-radius: 0.5rem;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
@@ -92,7 +92,7 @@ h1 {
   justify-content: center;
   align-items: center;
   margin-bottom: 40px;
-  background: linear-gradient(to right, #423030, #421d1d);  color: #fff;
+  background: linear-gradient(to right, #351f1f, #2d1717);  color: #fff;
   color: #fff;
   margin: 1rem 0;
   border-radius: 0.5rem;
@@ -107,7 +107,7 @@ h1 {
   justify-content: center;
   align-items: center;
   display: flex;
-  background: linear-gradient(to right, #423030, #421d1d);  color: #fff;
+  background: linear-gradient(to right, #351f1f, #2d1717);  color: #fff;
   margin: 3rem 0;
   border-radius: 0.5rem;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
