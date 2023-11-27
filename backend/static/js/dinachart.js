@@ -1,3 +1,5 @@
+
+
 function updateChart() {
     let selectedData = document.getElementById('dataSelect').value;
 
@@ -5,8 +7,6 @@ function updateChart() {
     fetch(`/get_data/${selectedData}`)
         .then(response => response.json())
         .then(data => { 
-console.log('no  entiendoo')
-console.log(data)
     
     if (myChart) {
         myChart.destroy();
@@ -27,7 +27,22 @@ console.log(data)
             }]
         },
         options: {
-            // Configure chart options as needed
+            scales: {
+                x: {
+                    title:{
+                        display : true,
+                        text: 'Nombre de los artistas'
+                    }
+                },
+                y: {
+                    title:{
+                        display:true,
+                        text:'Conteo'
+                    }
+
+                }
+            }
+            
         }
     });
     myChart.update();
@@ -53,6 +68,20 @@ let myChart = new Chart(ctx, {
         }]
     },
     options: {
-        // Configure chart options as needed
+        scales: {
+            x: {
+                title:{
+                    display : true,
+                    text: 'Nombre de los artistas'
+                }
+            },
+            y: {
+                title:{
+                    display:true,
+                    text:'Conteo'
+                }
+
+            }
+        }
     }
 });
