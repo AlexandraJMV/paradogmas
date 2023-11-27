@@ -5,7 +5,9 @@ function updateChart() {
     fetch(`/get_data/${selectedData}`)
         .then(response => response.json())
         .then(data => { 
-
+console.log('no  entiendoo')
+console.log(data)
+    
     if (myChart) {
         myChart.destroy();
     }
@@ -36,6 +38,7 @@ function updateChart() {
 }
 
 
+console.log('no  entiendoo')
 let ctx = document.getElementById('myChart').getContext('2d');
 let myChart = new Chart(ctx, {
     type: 'bar',

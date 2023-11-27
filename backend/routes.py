@@ -23,7 +23,6 @@ def toptrack_count():
     # Top 10 artistas según cantidad de canciones
     top10 = tracks_by_artist.sort_values('track_name', ascending = False)['track_name'].head(10)
     top10 = top10.to_json(orient = 'split')
-    print(top10)
     return top10
 
 def bottomtrack_count():
@@ -37,6 +36,8 @@ def bottomtrack_count():
     # Top 10 artistas según cantidad de canciones
     top10 = tracks_by_artist.sort_values('track_name', ascending = True)['track_name'].head(10)
     top10 = top10.to_json(orient = 'split')
+    print(top10)
+    
     return top10
 
 def generate_genre_data(time_intv):
