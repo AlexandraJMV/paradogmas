@@ -49,6 +49,5 @@ let charty = new Chart(ctx2, {
         }]
     },
     options: {
-        // Configure chart options as needed
     }
 });

@@ -66,8 +66,46 @@ def generate_genre_data(time_intv):
     except:
         return None
     
+def generate_scatter_data(selected_data1, selected_data2):
+    data_path = "backend/data/spotify_songs.csv"
+    data = pd.read_csv(data_path)
+    
+    data['label'] = data['track_name']
+    
+    
+    if selected_data1 != selected_data2 :
+        new_names = {selected_data1 : 'x', selected_data2 : 'y' }
+        
+        data =  data[[selected_data1, selected_data2, 'label']]
+        data.rename(columns=new_names, inplace=True)
+        data = data.sample(1000).to_json(orient='records')
+        
+        return data
+    
+    else:
+        data['aux'] = data[selected_data1]
+        new_names = {selected_data1 : 'x', 'aux' : 'y' }
+        
+        
+        data =  data[[selected_data1, 'aux', 'label']]
+        
+        data.rename(columns=new_names, inplace=True)
+        
+        data = data.sample(1000).to_json(orient='records')
+        
+        return data
+
 
 # Rutas 
+
+@app.route('/get_data3/<selected_data1>/<selected_data2>')
+def get_data3(selected_data1, selected_data2):
+    
+    if selected_data1 or selected_data2:
+        return generate_scatter_data(selected_data1, selected_data2)
+    else:
+        return jsonify([{'x':1, 'y':2}])
+
 
 # Recopilamos data para el segundo gráfico
 @app.route('/get_data2/<selected_data>')
@@ -91,3 +129,17 @@ def get_data(selected_data):
 @app.route("/face", methods = ["GET", "POST"])
 def face():
     return render_template("face.html")
+
+@app.route('/test')
+def test():
+    # Dummy data for demonstration
+    data = [
+        {'x': 1, 'y': 5},
+        {'x': 2, 'y': 8},
+        {'x': 3, 'y': 12}
+        # Add more data as needed
+    ]
+    
+    data = json.dumps(data)
+    
+    return render_template('scattertest.html', data=data)
