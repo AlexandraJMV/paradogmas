@@ -83,7 +83,7 @@ body {
     font-size: 60px;
     font-weight: 600;
     text-transform: uppercase;
-    color: #bbb;
+    color: #fff;
 
 }
 
@@ -98,11 +98,12 @@ p {
 .btn {
     display: inline-block;
     margin-top: 15px;
+    margin-bottom: 10px;
     padding: 10px 40px;
-    border: 2px solid #9c27b0;
+    border: 2px solid #27b092;
     color: #fff;
     text-decoration: none;
-    background: #9c27b0;
+    background: #27b092;
 
 }
 
@@ -185,7 +186,22 @@ p {
 
 .contact {
     padding: 20px;
-    background: #101010;
+    background: #1f1d1d;
     padding-bottom: 0;
 
 }
+
+#graphContainer {
+    width: 100%;
+    max-width: 600px; /* Puedes ajustar esto según tus necesidades */
+    margin: auto;
+    height: auto; /* Esto podría ser una altura fija o relativa también */
+  }
+  
+  /* Media queries para ajustar la visualización en dispositivos de diferentes tamaños */
+  @media (max-width: 768px) {
+    #graphContainer {
+      max-width: 100%;
+    }
+  }
+  
