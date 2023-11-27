@@ -7,8 +7,9 @@
 }
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #34495e;
+  background-color: #3a9af9;
   color: #fff;
+  background-image: url("../static/img/wallpaper.gif");
 }
 h1 {
   text-align: center;

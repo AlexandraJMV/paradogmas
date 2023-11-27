@@ -14,8 +14,6 @@ function destroyChart(chart) {
 function updateChart3() {
     let selectedData_1 = document.getElementById('dataSelect3_1').value;
     let selectedData_2 = document.getElementById('dataSelect3_2').value;
-    console.log(selectedData_1);
-    console.log(selectedData_2);
 
     // Make an asynchronous request to the Flask route to get data
     fetch(`/get_data3/${selectedData_1}/${selectedData_2}`)
@@ -23,8 +21,6 @@ function updateChart3() {
         .then(data => {
             // Use the promise to ensure proper sequence of destroying and creating the chart
             destroyChart(chartum).then(() => {
-                console.log(data);
-                console.log('test')
 
 
                 // Create a new chart with the received data
@@ -35,17 +31,26 @@ function updateChart3() {
                         datasets: [{
                             label: selectedData_1 + " vs " + selectedData_2,
                             data: data,
-                            backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                            backgroundColor: 'rgba(30, 70, 180, 0.7)',
                         }]
                     },
                     options: {
                         scales: {
                             x: {
                                 type: 'linear',
-                                position: 'bottom'
+                                position: 'bottom',
+                                title:{
+                                    display : true,
+                                    text: selectedData_1
+                                }
                             },
                             y: {
-                                min: 0
+                                type: 'linear',
+                                title:{
+                                    display:true,
+                                    text:selectedData_2
+                                }
+
                             }
                         },
                         plugins: {
@@ -76,7 +81,7 @@ let ctx3 = document.getElementById('chartum').getContext('2d');
             datasets: [{
                 label: 'Scatter Plot',
                 data: [],
-                backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                backgroundColor: 'rgba(30, 70, 180, 0.7)'
             }]
         },
         options: {

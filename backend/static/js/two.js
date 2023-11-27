@@ -1,3 +1,15 @@
+function generateRandomColorsArray(numColors, colorGenerator) {
+    const colorsArray = [];
+  
+    // Generate the specified number of random colors
+    for (let i = 0; i < numColors; i++) {
+      const randomColor = colorGenerator();
+      colorsArray.push(randomColor);
+    }
+  
+    return colorsArray;
+  }
+
 function updateChart2() {
     let selectedData = document.getElementById('dataSelect2').value;
 
@@ -10,25 +22,33 @@ function updateChart2() {
                 charty.destroy(); // Corrected variable name here
             }
 
-            // Create a new chart with the received data
+            let colors = generateRandomColorsArray(data.data.length, function(){ 
+
+                    const hue = 180 + Math.random() * 160;
+
+                    const saturation = Math.floor(Math.random() * 100) ;
+                    const lightness = Math.floor(Math.random() * 50) + 30; // Adjust as needed for a darker or lighter appearance
+              
+                    const pastelColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+                  
+                    return pastelColor;
+                  })
+
             let ctx = document.getElementById('charty').getContext('2d');
             charty = new Chart(ctx, {
-                type: 'bar',
+                type: 'pie',
                 data: {
                     labels: data.index,
                     datasets: [{
                         label: document.getElementById('dataSelect2').value,
                         data: data.data,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1
+                        backgroundColor: colors
                     }]
                 },
                 options: {
-                    // Configure chart options as needed
                 }
             });
-            charty.update(); // Corrected method name here
+            charty.update(); 
         })
         .catch(error => {
             console.error('Error fetching data:', error);
@@ -37,14 +57,13 @@ function updateChart2() {
 
 let ctx2 = document.getElementById('charty').getContext('2d');
 let charty = new Chart(ctx2, {
-    type: 'bar',
+    type: 'pie',
     data: {
         labels: [],
         datasets: [{
             label: 'Selected Data',
             data: [],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: [],
             borderWidth: 1
         }]
     },
