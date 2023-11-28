@@ -131,16 +131,3 @@ def get_data(selected_data):
 def face():
     return render_template("face.html")
 
-@app.route('/test')
-def test():
-    # Dummy data for demonstration
-    data = [
-        {'x': 1, 'y': 5},
-        {'x': 2, 'y': 8},
-        {'x': 3, 'y': 12}
-        # Add more data as needed
-    ]
-    
-    data = json.dumps(data)
-    
-    return render_template('scattertest.html', data=data)

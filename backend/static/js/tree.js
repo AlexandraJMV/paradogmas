@@ -1,4 +1,4 @@
-let chartum = null; // Declare chartum with an initial value of null
+let chartum = null; 
 
 function destroyChart(chart) {
     return new Promise(resolve => {
@@ -15,15 +15,12 @@ function updateChart3() {
     let selectedData_1 = document.getElementById('dataSelect3_1').value;
     let selectedData_2 = document.getElementById('dataSelect3_2').value;
 
-    // Make an asynchronous request to the Flask route to get data
     fetch(`/get_data3/${selectedData_1}/${selectedData_2}`)
         .then(response => response.json())
         .then(data => {
-            // Use the promise to ensure proper sequence of destroying and creating the chart
             destroyChart(chartum).then(() => {
 
 
-                // Create a new chart with the received data
                 let ctx = document.getElementById('chartum').getContext('2d');
                 chartum = new Chart(ctx, {
                     type: 'scatter',
@@ -93,7 +90,6 @@ function updateChart3() {
         });
 }
 
-// Initial chart setup
 let ctx3 = document.getElementById('chartum').getContext('2d');
     chartum = new Chart(ctx3, {
         type: 'scatter',
@@ -137,7 +133,6 @@ let ctx3 = document.getElementById('chartum').getContext('2d');
     
     });
 
-    // Now that chartum is initialized, you can call updateChart3 without passing it as an argument
     document.getElementById('data1_button').addEventListener('click', updateChart3);
     document.getElementById('data2_button').addEventListener('click', updateChart3);
 

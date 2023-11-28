@@ -13,20 +13,19 @@ function generateRandomColorsArray(numColors, colorGenerator) {
 function updateChart2() {
     let selectedData = document.getElementById('dataSelect2').value;
 
-    // Make an asynchronous request to the Flask route to get data
     fetch(`/get_data2/${selectedData}`)
         .then(response => response.json())
         .then(data => { 
 
             if (charty) {
-                charty.destroy(); // Corrected variable name here
+                charty.destroy(); 
             }
 
             let colors = generateRandomColorsArray(data.data.length, function(){ 
                 const hue = (Math.random() < 0.5 ? Math.random() * 20 : 320 + Math.random() * 60);
 
                     const saturation = Math.floor(Math.random() * 50) + 25;
-                    const lightness = Math.floor(Math.random() * 50) + 40; // Adjust as needed for a darker or lighter appearance
+                    const lightness = Math.floor(Math.random() * 50) + 40; 
               
                     const pastelColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
                   
@@ -47,7 +46,7 @@ function updateChart2() {
                 options: {
                     elements: {
                         arc: {
-                            borderColor: 'rgba(255, 255, 255, 0.3)', // White with 50% opacity
+                            borderColor: 'rgba(255, 255, 255, 0.3)', 
                             borderWidth: 2
                         }
                     },

@@ -15,14 +15,13 @@ function updateChart() {
         const hue = (Math.random() < 0.5 ? Math.random() * 20 : 320 + Math.random() * 60);
 
             const saturation = Math.floor(Math.random() * 70) + 40;
-            const lightness = Math.floor(Math.random() * 50) + 40; // Adjust as needed for a darker or lighter appearance
+            const lightness = Math.floor(Math.random() * 50) + 40; 
       
             const pastelColor = `hsl(${hue}, ${saturation}%, ${lightness}%, 0.6)`;
           
             return pastelColor;
           })
 
-    // Create a new chart with the received data
     let ctx = document.getElementById('myChart').getContext('2d');
     myChart = new Chart(ctx, {
         type: 'bar',
