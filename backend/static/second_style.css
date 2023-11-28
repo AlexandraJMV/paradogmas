@@ -31,6 +31,7 @@ body {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
   z-index: 1000; 
 }
+
 h1 {
   text-align: center;
   margin: 2rem 0;
@@ -44,11 +45,12 @@ h1 {
 }
 
 .accordion-item {
-  background-color: #0e0505dc;
+  background-color: rgba(29, 17, 19, 0.911);
   color: #fff;
   margin: 1rem 0;
   border-radius: 0.5rem;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
+  
 }
 .accordion-item-header {
   padding: 0.5rem 3rem 0.5rem 1rem;
@@ -66,21 +68,20 @@ h1 {
   position: absolute;
   right: 1rem;
 }
-.accordion-item-header.active::after {
-  content: "\2212";
-}
+
 .accordion-item-body {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
 .accordion-item-body-content {
-  padding: 1rem;
+  padding: 3rem;
   line-height: 1.5rem;
   border-top: 1px solid;
   border-image: linear-gradient(to right, transparent, #34495e, transparent) 1;
   
 }
+
 .accordion-item-body-content .responsive-image {
   float: right;
   max-width: 40%;
@@ -189,8 +190,23 @@ button:hover {
 }
 
 img {
-  max-width: 100%; 
-  height: auto;    
+  max-width:fit-content; 
+  height:100px; 
   display: block; 
   margin: 0 auto;  
+}
+
+#charty{
+  height: min-content;
+  max-height: 300px;
+}
+
+#chartum{
+  height: min-content;
+  max-height: 500px;
+}
+
+#myChart{
+  height: min-content;
+  max-height: 400px;
 }

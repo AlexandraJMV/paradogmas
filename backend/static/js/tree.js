@@ -31,7 +31,7 @@ function updateChart3() {
                         datasets: [{
                             label: selectedData_1 + " vs " + selectedData_2,
                             data: data,
-                            backgroundColor: 'rgba(350, 90, 60, 0.7)',
+                            backgroundColor: 'rgba(260, 110, 130, 0.8)',
                         }]
                     },
                     options: {
@@ -101,7 +101,7 @@ let ctx3 = document.getElementById('chartum').getContext('2d');
             datasets: [{
                 label: 'Scatter Plot',
                 data: [],
-                backgroundColor: 'rgba(220, 90, 60, 0.7)'
+                backgroundColor: 'rgba(260, 110, 130, 0.8)'
             }]
         },
         options: {
