@@ -21,15 +21,16 @@ body {
 }
 
 .barra {
-  background: linear-gradient(to right, #423030, #421d1d);  color: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: linear-gradient(to right, #4d2222e0, #0e0505e3);
   color: #fff;
-  margin: 1rem 0;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
-
-
+  margin: 0; 
+  border-radius: 0;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  z-index: 1000; 
 }
-
 h1 {
   text-align: center;
   margin: 2rem 0;
@@ -39,11 +40,11 @@ h1 {
 .accordion {
   width: 90%;
   max-width: 1000px;
-  margin: 2rem auto;
+  margin: 10rem auto;
 }
 
 .accordion-item {
-  background-color: #2d1717;
+  background-color: #0e0505dc;
   color: #fff;
   margin: 1rem 0;
   border-radius: 0.5rem;
@@ -92,7 +93,7 @@ h1 {
   justify-content: center;
   align-items: center;
   margin-bottom: 40px;
-  background: linear-gradient(to right, #351f1f, #2d1717);  color: #fff;
+  background:  #230f0fdc;  color: #fff;
   color: #fff;
   margin: 1rem 0;
   border-radius: 0.5rem;
@@ -107,21 +108,61 @@ h1 {
   justify-content: center;
   align-items: center;
   display: flex;
-  background: linear-gradient(to right, #351f1f, #2d1717);  color: #fff;
+  background:  rgba(30, 13, 13, 0.863);  color: #fff;
   margin: 3rem 0;
   border-radius: 0.5rem;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
   
+  
 }
-/* Style to display forms side by side and justify to the right */
+
 .form-container {
   display: flex;
   justify-content: space-between;
 }
 
-/* Optional: Add some margin for spacing between forms */
 form {
   margin-right: 20px;
+}
+
+.custom-dropdown{
+  background-color:rgba(36, 2, 2, 0.898);
+  border: 0.1px solid #ffebeb; 
+  border-radius: 5px; 
+  padding: 5px; 
+  color: #fff8f8;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-style: italic;
+}
+
+.custom-dropdown option {
+  background-color: rgba(36, 2, 2, 0.898); 
+  color: #fff6f6; 
+}
+
+.custom-dropdown:hover{
+  background-color: rgba(122, 178, 255, 0.898); 
+  color: #b10b37; 
+}
+
+button {
+  background-color: #4caf4f29; 
+  color: white; 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px;
+  margin-left: 10px; 
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+button:hover {
+  background-color: rgba(86, 227, 91, 0.424); 
+  color: rgb(246, 165, 165); 
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px; 
+  margin-left: 10px; 
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 @media screen and (max-width: 768px) {
@@ -130,4 +171,9 @@ form {
   }
 }
 
-
+img {
+  max-width: 100%; 
+  height: auto;    
+  display: block; 
+  margin: 0 auto;  
+}

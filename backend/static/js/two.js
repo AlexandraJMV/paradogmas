@@ -45,6 +45,19 @@ function updateChart2() {
                     }]
                 },
                 options: {
+                    elements: {
+                        arc: {
+                            borderColor: 'rgba(255, 255, 255, 0.3)', // White with 50% opacity
+                            borderWidth: 2
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'rgba(255, 255, 255, 0.7)'
+                            }
+                        }
+                    }
                 }
             });
             charty.update(); 

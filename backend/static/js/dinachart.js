@@ -3,7 +3,6 @@
 function updateChart() {
     let selectedData = document.getElementById('dataSelect').value;
 
-    // Make an asynchronous request to the Flask route to get data
     fetch(`/get_data/${selectedData}`)
         .then(response => response.json())
         .then(data => { 
@@ -16,9 +15,9 @@ function updateChart() {
         const hue = (Math.random() < 0.5 ? Math.random() * 20 : 320 + Math.random() * 60);
 
             const saturation = Math.floor(Math.random() * 70) + 40;
-            const lightness = Math.floor(Math.random() * 50) + 20; // Adjust as needed for a darker or lighter appearance
+            const lightness = Math.floor(Math.random() * 50) + 40; // Adjust as needed for a darker or lighter appearance
       
-            const pastelColor = `hsl(${hue}, ${saturation}%, ${lightness}%, 0.5)`;
+            const pastelColor = `hsl(${hue}, ${saturation}%, ${lightness}%, 0.6)`;
           
             return pastelColor;
           })
@@ -42,15 +41,36 @@ function updateChart() {
                 x: {
                     title:{
                         display : true,
-                        text: 'Nombre de los artistas'
+                        text: 'Nombre de los artistas',
+                        color: 'rgba(255, 255, 255, 0.9)'
+                    },
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.9)'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.5)'
                     }
                 },
                 y: {
                     title:{
                         display:true,
-                        text:'Conteo'
+                        text:'Conteo',
+                        color: 'rgba(255, 255, 255, 0.9)'
+                    },
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.9)'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.5)'
                     }
 
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'rgba(255, 255, 255, 0.9)'
+                    }
                 }
             }
             
@@ -92,6 +112,13 @@ let myChart = new Chart(ctx, {
                     text:'Conteo'
                 }
 
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    color: 'rgba(255, 255, 255, 0.9)'
+                }
             }
         }
     }

@@ -31,7 +31,7 @@ function updateChart3() {
                         datasets: [{
                             label: selectedData_1 + " vs " + selectedData_2,
                             data: data,
-                            backgroundColor: 'rgba(200, 70, 40, 0.7)',
+                            backgroundColor: 'rgba(350, 90, 60, 0.7)',
                         }]
                     },
                     options: {
@@ -41,14 +41,28 @@ function updateChart3() {
                                 position: 'bottom',
                                 title:{
                                     display : true,
-                                    text: selectedData_1
+                                    text: selectedData_1,
+                                    color:'rgba(255, 255, 255, 0.7)'
+                                },
+                                ticks: {
+                                    color: 'rgba(255, 255, 255, 0.7)'
+                                },
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.7)'
                                 }
                             },
                             y: {
                                 type: 'linear',
                                 title:{
                                     display:true,
-                                    text:selectedData_2
+                                    text:selectedData_2,
+                                    color: 'rgba(255, 255, 255, 0.7)'
+                                },
+                                ticks: {
+                                    color: 'rgba(255, 255, 255, 0.7)'
+                                },
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.7)'
                                 }
 
                             }
@@ -61,8 +75,14 @@ function updateChart3() {
                                   return label;
                                 }
                               }
+                            },
+                            legend: {
+                                labels: {
+                                    color: 'rgba(255, 255, 255, 0.7)'
+                                }
                             }
-                          }
+                          },
+                          
                     }
                 });
                 chartum.update();
@@ -81,27 +101,38 @@ let ctx3 = document.getElementById('chartum').getContext('2d');
             datasets: [{
                 label: 'Scatter Plot',
                 data: [],
-                backgroundColor: 'rgba(200, 70, 40, 0.7)'
+                backgroundColor: 'rgba(220, 90, 60, 0.7)'
             }]
         },
         options: {
             scales: {
                 x: {
                     type: 'linear',
-                    position: 'bottom'
+                    position: 'bottom',
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    }
                 },
                 y: {
-                    min: 0
-                }
+                    min: 0,
+                    ticks: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    },
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    }
+                },
             },
-            tooltips: {
-                callbacks: {
-                  label: function (tooltipItem, data) {
-                    var label = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index].label;
-                    return label;
-                  }
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'rgba(255, 255, 255, 0.7)'
+                    }
                 }
-              }
+            }
         }
     
     });
