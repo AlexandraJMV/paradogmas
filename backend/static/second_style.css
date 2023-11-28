@@ -79,7 +79,24 @@ h1 {
   line-height: 1.5rem;
   border-top: 1px solid;
   border-image: linear-gradient(to right, transparent, #34495e, transparent) 1;
+  
 }
+.accordion-item-body-content .responsive-image {
+  float: right;
+  max-width: 40%;
+  height: auto;
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .accordion-item-body-content .responsive-image {
+      float: none;
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+  }
+}
+
 
 @media(max-width:767px) {
   html {
