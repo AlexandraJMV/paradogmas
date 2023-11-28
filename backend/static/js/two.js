@@ -23,11 +23,10 @@ function updateChart2() {
             }
 
             let colors = generateRandomColorsArray(data.data.length, function(){ 
+                const hue = (Math.random() < 0.5 ? Math.random() * 20 : 320 + Math.random() * 60);
 
-                    const hue = 180 + Math.random() * 160;
-
-                    const saturation = Math.floor(Math.random() * 100) ;
-                    const lightness = Math.floor(Math.random() * 50) + 30; // Adjust as needed for a darker or lighter appearance
+                    const saturation = Math.floor(Math.random() * 50) + 35;
+                    const lightness = Math.floor(Math.random() * 50) + 10; // Adjust as needed for a darker or lighter appearance
               
                     const pastelColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
                   
